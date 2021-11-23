@@ -42,6 +42,17 @@ public class Pattern {
 		}
 	}
 
+	public void addPhoneNumber() {
+		System.out.print("Enter Phone Number : ");
+		phoneNumber = sc.nextLine();
+		boolean check = phoneNumber.matches("^([0-9]{1,2})\\s([0-9]{10})$");
+		if (check == true) {
+		} else {
+			System.out.println("Invalid Phone Number Add again (Eg:91 9919819801)");	
+			addPhoneNumber();
+		}
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -81,4 +92,5 @@ public class Pattern {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 }

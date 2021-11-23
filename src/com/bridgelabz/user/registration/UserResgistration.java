@@ -14,8 +14,11 @@ public class UserResgistration {
 		// Email Adding
 		pattern.addEmail();
 		email = pattern.getEmail();
+		// Email Adding
+		pattern.addPhoneNumber();
+		phoneNumber = pattern.getPhoneNumber();
 		System.out.println(
-				"\nUser Data:-\n\tFirst Name : " + firstName + "\n\tLast Name : " + lastName + "\n\tEmail : " + email);
+				"\nUser Data:-\n\tFirst Name : " + firstName + "\n\tLast Name : " + lastName + "\n\tEmail : " + email+ "\n\tPhone Number : " + phoneNumber);
 	}
 
 }
