@@ -20,6 +20,19 @@ public class Pattern {
 		}
 	}
 
+	public void isValidLastName() {
+
+		System.out.print("Enter First Name : ");
+		lastName = sc.nextLine();
+		boolean check = lastName.matches("^([A-Z]{1}+[a-z]{2,})*$");
+		if (check == true) {
+			System.out.println("Valid");
+		} else {
+			System.out.println("Invalid Add again");
+			isValidLastName();
+		}
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
