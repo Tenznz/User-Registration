@@ -11,7 +11,11 @@ public class UserResgistration {
 		// Last Name Adding
 		pattern.addLastName();
 		lastName = pattern.getLastName();
-		System.out.println("\nUser Data:-\n\tFirst Name : " + firstName + "\n\tLast Name : " + lastName);
+		// Email Adding
+		pattern.addEmail();
+		email = pattern.getEmail();
+		System.out.println(
+				"\nUser Data:-\n\tFirst Name : " + firstName + "\n\tLast Name : " + lastName + "\n\tEmail : " + email);
 	}
 
 }

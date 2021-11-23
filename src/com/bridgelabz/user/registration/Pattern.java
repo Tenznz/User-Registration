@@ -31,6 +31,17 @@ public class Pattern {
 		}
 	}
 
+	public void addEmail() {
+		System.out.print("Enter Email : ");
+		email = sc.nextLine();
+		boolean check = email.matches("^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$");
+		if (check == true) {
+		} else {
+			System.out.println("Invalid Email Add again (Eg:abc.xyz@bl.co.in)");
+			addEmail();
+		}
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -69,13 +80,5 @@ public class Pattern {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public Scanner getSc() {
-		return sc;
-	}
-
-	public void setSc(Scanner sc) {
-		this.sc = sc;
 	}
 }
