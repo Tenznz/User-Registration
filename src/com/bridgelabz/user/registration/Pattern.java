@@ -14,7 +14,7 @@ public class Pattern {
 		boolean check = firstName.matches("^([A-Z]{1}+[a-z]{2,})*$");
 		if (check == true) {
 		} else {
-			System.out.println("Invalid Add again (Eg:Tenzing)");
+			System.out.println("Invalid Name format \nAdd again (Eg:Tenzing)");
 			addFirstName();
 		}
 	}
@@ -26,7 +26,7 @@ public class Pattern {
 		boolean check = lastName.matches("^([A-Z]{1}+[a-z]{2,})*$");
 		if (check == true) {
 		} else {
-			System.out.println("Invalid Add again (Eg:Tenzing)");
+			System.out.println("Invalid Name format \nAdd again (Eg:Tenzing)");
 			addLastName();
 		}
 	}
@@ -37,7 +37,7 @@ public class Pattern {
 		boolean check = email.matches("^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$");
 		if (check == true) {
 		} else {
-			System.out.println("Invalid Email Add again (Eg:abc.xyz@bl.co.in)");
+			System.out.println("Invalid Email format\nAdd again (Eg:abc.xyz@bl.co.in)");
 			addEmail();
 		}
 	}
@@ -48,8 +48,19 @@ public class Pattern {
 		boolean check = phoneNumber.matches("^([0-9]{1,2})\\s([0-9]{10})$");
 		if (check == true) {
 		} else {
-			System.out.println("Invalid Phone Number Add again (Eg:91 9919819801)");	
+			System.out.println("Invalid Phone Number format \nAdd again (Eg:91 9919819801)");
 			addPhoneNumber();
+		}
+	}
+
+	public void addPassword() {
+		System.out.print("Enter Password : ");
+		password = sc.nextLine();
+		boolean check = password.matches("^[a-zA-Z]{8,}$");//Rule1: minimum 8 Characters
+		if (check == true) {
+		} else {
+			System.out.println("Invalid password format \nAdd again [Atleast 8 Character ]");
+			addPassword();
 		}
 	}
 
