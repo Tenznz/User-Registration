@@ -7,29 +7,27 @@ public class Pattern {
 
 	Scanner sc = new Scanner(System.in);
 
-	public void isValidFirstName() {
+	public void addFirstName() {
 
 		System.out.print("Enter First Name : ");
 		firstName = sc.nextLine();
 		boolean check = firstName.matches("^([A-Z]{1}+[a-z]{2,})*$");
 		if (check == true) {
-			System.out.println("Valid");
 		} else {
-			System.out.println("Invalid Add again");
-			isValidFirstName();
+			System.out.println("Invalid Add again (Eg:Tenzing)");
+			addFirstName();
 		}
 	}
 
-	public void isValidLastName() {
+	public void addLastName() {
 
-		System.out.print("Enter First Name : ");
+		System.out.print("Enter Last Name : ");
 		lastName = sc.nextLine();
 		boolean check = lastName.matches("^([A-Z]{1}+[a-z]{2,})*$");
 		if (check == true) {
-			System.out.println("Valid");
 		} else {
-			System.out.println("Invalid Add again");
-			isValidLastName();
+			System.out.println("Invalid Add again (Eg:Tenzing)");
+			addLastName();
 		}
 	}
 
@@ -71,5 +69,13 @@ public class Pattern {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Scanner getSc() {
+		return sc;
+	}
+
+	public void setSc(Scanner sc) {
+		this.sc = sc;
 	}
 }

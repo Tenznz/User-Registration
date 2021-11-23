@@ -6,12 +6,12 @@ public class UserResgistration {
 		String firstName, lastName, email, password, phoneNumber;
 		// First Name Adding
 		Pattern pattern = new Pattern();
-		pattern.isValidFirstName();
+		pattern.addFirstName();
 		firstName = pattern.getFirstName();
 		// Last Name Adding
-		pattern.isValidLastName();
+		pattern.addLastName();
 		lastName = pattern.getLastName();
-		System.out.println("First Name : " + firstName + "\nLast Name : " + lastName);
+		System.out.println("\nUser Data:-\n\tFirst Name : " + firstName + "\n\tLast Name : " + lastName);
 	}
 
 }
