@@ -8,17 +8,17 @@ public class UserResgistration {
 		UserResgistration user = new UserResgistration();
 		Pattern pattern = new Pattern();
 
-		pattern.addFirstName(); // First Name Adding
-		user.firstName = pattern.getFirstName();
-
-		pattern.addLastName(); // Last Name Adding
-		user.lastName = pattern.getLastName();
-
-		pattern.addEmail(); // Email Adding
-		user.email = pattern.getEmail();
-
-		pattern.addPhoneNumber(); // Phone Number Adding
-		user.phoneNumber = pattern.getPhoneNumber();
+//		pattern.addFirstName(); // First Name Adding
+//		user.firstName = pattern.getFirstName();
+//
+//		pattern.addLastName(); // Last Name Adding
+//		user.lastName = pattern.getLastName();
+//
+//		pattern.addEmail(); // Email Adding
+//		user.email = pattern.getEmail();
+//
+//		pattern.addPhoneNumber(); // Phone Number Adding
+//		user.phoneNumber = pattern.getPhoneNumber();
 
 		pattern.addPassword(); // Password Adding
 		user.password = pattern.getPassword();
