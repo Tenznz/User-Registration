@@ -56,10 +56,10 @@ public class Pattern {
 	public void addPassword() {
 		System.out.print("Enter Password : ");
 		password = sc.nextLine();
-		boolean check = password.matches("^[a-zA-Z]{8,}$");//Rule1: minimum 8 Characters
+		boolean check = password.matches("^(?=.*[A-Z]).[a-zA-Z]{8,}$");// Rule2:Should have Atleast 1 Upper Case
 		if (check == true) {
 		} else {
-			System.out.println("Invalid password format \nAdd again [Atleast 8 Character ]");
+			System.out.println("Invalid password format \nAdd again [Atleast 8 Character and 1 Upper Case ]");
 			addPassword();
 		}
 	}
