@@ -1,0 +1,1 @@
+abc@yahoo.com,abc-100@yahoo.com,abc@.com.my,abc123@.com.com,abc()*@gmail.com,abc@%*.com,abc+100@gmail.com,abc@gmail.com.aa.au,abc.100@abc.com.au
