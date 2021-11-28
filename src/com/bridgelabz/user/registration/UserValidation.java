@@ -3,6 +3,7 @@ package com.bridgelabz.user.registration;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ public class UserValidation {
 	public static final String NAME_PATTERN = "^([A-Z]{1}+[a-z]{2,})*$";
 	public static final String PHONE_NUMBER_PATTERN = "^([0-9]{1,2})\\s([0-9]{10})$";
 	public static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()]+)(?=\\S+$).{8,}$";
+
 	Scanner sc = new Scanner(System.in);
 
 	private UserValidation() {
@@ -75,6 +77,12 @@ public class UserValidation {
 //		}
 	}
 
+	public Boolean addEmail(String emailID) {
+		String email = emailID;
+		boolean check = email.matches(EMAIL_PATTERN);
+		return check;
+	}
+
 	public void addPhoneNumber() {
 		UserData userData = UserData.getInstance();
 		System.out.print("Enter Phone Number : ");
@@ -118,16 +126,16 @@ public class UserValidation {
 		System.out.println("Total email:-\n" + emails);
 
 		String[] emailArr = emails.split(",");
-		List<String> validEmail = new ArrayList<>();
-		List<String> invalidEmail = new ArrayList<>();
-
+		UserData userData = UserData.getInstance();
 		for (String a : emailArr) {
+
 			boolean check = a.matches(EMAIL_PATTERN);
+
 			if (check == true) {
-				validEmail.add(a);
+				UserData.validEmail.add(a);
 
 			} else {
-				invalidEmail.add(a);
+				UserData.invalidEmail.add(a);
 			}
 		}
 //		for (int i=0;i<emailArr.length;i++) {
@@ -141,12 +149,30 @@ public class UserValidation {
 //		}
 
 		System.out.println("\n-Valid Email- :");
-		for (String a : validEmail)
+		for (String a : userData.validEmail)
 			System.out.println(a);
 
 		System.out.println("\n-InValid Email- :");
-		for (String a : invalidEmail)
+		for (String a : userData.invalidEmail)
 			System.out.println(a);
 		sf.close();
 	}
+
+//	public boolean addEmail(String email) throws FileNotFoundException {
+//		File file = new File(
+//				"/home/tsewang/eclipse-workspace/UserRegistration/src/com/bridgelabz/user/registration/e-mail.txt");
+//		Scanner sf = new Scanner(file);
+//		boolean check = false;
+//		String emails = null;
+//		while (sf.hasNextLine())
+//			emails = sf.nextLine();
+//		System.out.println("Total email:-\n" + emails);
+//
+//		String[] emailArr = emails.split(",");
+//		UserData userData = UserData.getInstance();
+//
+//		check = email.matches(EMAIL_PATTERN);
+//		return check;
+//	}
+
 }

@@ -2,29 +2,30 @@ package com.bridgelabz.user.user_testcase;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
+import java.util.Arrays;
+import java.util.Collection;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import com.bridgelabz.user.registration.UserData;
 import com.bridgelabz.user.registration.UserValidation;
 
+@RunWith(Parameterized.class)
 public class UserRegistrationTest {
 
-	static UserData userData;
-	static UserValidation userValidation;
-//	public static UserRegistrationTest instance;
+	private static UserData userData;
+	private static UserValidation userValidation;
+	private String email;
+	private Boolean expectedEmail;
 
-//	private UserRegistrationTest() {
-//
-//	}
-//
-//	public UserRegistrationTest getInstance() {
-//		if (instance == null) {
-//			instance = new UserRegistrationTest();
-//		}
-//		return instance;
-//	}
+	public UserRegistrationTest(String email, Boolean expectedEmail) {
+		super();
+		this.email = email;
+		this.expectedEmail = expectedEmail;
+	}
 
 	@BeforeClass
 	public static void init() {
@@ -39,7 +40,6 @@ public class UserRegistrationTest {
 		userValidation.addFirstName();
 		boolean check = userData.getFirstName().matches(userValidation.NAME_PATTERN);
 		assertEquals(true, check);
-
 	}
 
 	@Test
@@ -107,9 +107,32 @@ public class UserRegistrationTest {
 		assertEquals(false, userData.getPhoneNumber().matches(userValidation.PHONE_NUMBER_PATTERN));
 	}
 
-	@After
-	public void endTask() {
+	@Parameterized.Parameters
+	public static Collection input() {
+		return Arrays.asList(new Object[][] { { "abc@yahoo.com", true }, { "abc-100@yahoo.com", true },
+				{ "abc.100@yahoo.com", true }, { "abc111@abc.com", true }, { "abc-100@abc.net", true },
+				{ "abc.100@abc.com.au", true }, { "abc@1.com", true }, { "abc@gmail.com.com", true },
+				{ "abc+100@gmail.com", true }, { "abc", false }, { ".abc@.com.my", false }, { "abc123@gmail.a", false },
+				{ "abc123@.com", false }, { "abc.@gmail.com11", false }, { "abc@abc@gmail.com", false },
+				{ "abc@gmail.com.1a", false } });
+	}
+
+//	@Parameterized.Parameters
+//	public static List<List<String>> input() throws FileNotFoundException {
+//
+//		return Arrays.asList(UserData.getValidEmail());
+//	}
+
+	@AfterClass
+	public static void endTask() {
 		System.out.println("Ending task");
+	}
+
+	@Test
+	public void testEmailShouldBeValid() {
+		boolean check = userValidation.addEmail(email);
+		System.out.println(email + " " + check + " -" + expectedEmail);
+		assertEquals(expectedEmail, check);
 	}
 
 }

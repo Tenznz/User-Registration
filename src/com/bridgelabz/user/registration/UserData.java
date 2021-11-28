@@ -1,5 +1,8 @@
 package com.bridgelabz.user.registration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserData {
 	public static UserData instance;
 	private String firstName;
@@ -7,9 +10,28 @@ public class UserData {
 	private String email;
 	private String password;
 	private String phoneNumber;
+	 static List<String> validEmail;
+	 static List<String> invalidEmail;
 
 	private UserData() {
+		validEmail=new ArrayList<>();
+		invalidEmail=new ArrayList<>();
+	}
 
+	public static List<String> getValidEmail() {
+		return validEmail;
+	}
+
+	public static void setValidEmail(List<String> validEmail) {
+		UserData.validEmail = validEmail;
+	}
+
+	public static List<String> getInvalidEmail() {
+		return invalidEmail;
+	}
+
+	public static void setInvalidEmail(List<String> invalidEmail) {
+		UserData.invalidEmail = invalidEmail;
 	}
 
 	public static UserData getInstance() {
