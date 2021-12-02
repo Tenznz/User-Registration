@@ -10,10 +10,9 @@ public class UserRegistration {
 		UserRegistration user = new UserRegistration();
 		UserData userData = UserData.getInstance();
 		UserValidation userValidation = UserValidation.getInstance();
-//
 //		userValidation.addFirstName(); // First Name Adding
 //		user.firstName = userData.getFirstName();
-//
+
 //		userValidation.addLastName(); // Last Name Adding
 //		user.lastName = userData.getLastName();
 //
@@ -26,7 +25,7 @@ public class UserRegistration {
 //		userValidation.addPassword(); // Password Adding
 //		user.password = userData.getPassword();
 //		user.display();
-		userValidation.readFile();
+//		userValidation.readFile();
 	}
 
 	private void display() {

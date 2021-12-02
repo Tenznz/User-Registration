@@ -2,10 +2,9 @@ package com.bridgelabz.user.registration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.Scanner;
+
+import com.bridgelabz.user.registration.InvalidUserDetailException.Invalid;
 
 public class UserValidation {
 	public static UserValidation instance;
@@ -28,20 +27,23 @@ public class UserValidation {
 	}
 
 	public void addFirstName() {
+
 		UserData userData = UserData.getInstance();
 		System.out.print("Enter First Name : ");
-		String fName = sc.nextLine();
+		String fName = null;
+		fName = sc.nextLine();
 		userData.setFirstName(fName);
 		boolean check = fName.matches(NAME_PATTERN);
-//		
-//		if (check == true) {
-//			userData.setFirstName(fName);
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("InValid");
-//			System.out.println("Invalid Name format \nAdd again (Eg:Tenzing)");
-//			addFirstName();
-//		}
+		try {
+			if (check == true) {
+			}
+
+			else {
+				throw new InvalidUserDetailException(Invalid.FirstName, "Invalid First Name format");
+			}
+		} catch (InvalidUserDetailException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -51,14 +53,16 @@ public class UserValidation {
 		String lName = sc.nextLine();
 		userData.setLastName(lName);
 		boolean check = lName.matches(NAME_PATTERN);
-//		if (check == true) {
-//			userData.setLastName(lName);
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("InValid");
-//			System.out.println("Invalid Name format \nAdd again (Eg:Tenzing)");
-//			addLastName();
-//		}
+		try {
+			if (check == true) {
+			}
+
+			else {
+				throw new InvalidUserDetailException(Invalid.LastName, "Invalid Last Name format");
+			}
+		} catch (InvalidUserDetailException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addEmail() {
@@ -67,20 +71,34 @@ public class UserValidation {
 		String email = sc.nextLine();
 		userData.setEmail(email);
 		boolean check = email.matches(EMAIL_PATTERN);
-//		if (check == true) {
-//			userData.setEmail(email);
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("InValid");
-//			System.out.println("Invalid Email format\nAdd again (Eg:abc.xyz@bl.co.in)");
-//			addEmail();
-//		}
+		try {
+			if (check == true) {
+			}
+
+			else {
+				throw new InvalidUserDetailException(Invalid.Email, "Invalid Email Format");
+			}
+		} catch (InvalidUserDetailException e) {
+			e.printStackTrace();
+		}
 	}
 
+	@SuppressWarnings("finally")
 	public Boolean addEmail(String emailID) {
 		String email = emailID;
 		boolean check = email.matches(EMAIL_PATTERN);
-		return check;
+		try {
+			if (check == true) {
+			}
+
+			else {
+				throw new InvalidUserDetailException(Invalid.Email, "Invalid Email Format");
+			}
+		} catch (InvalidUserDetailException e) {
+			e.printStackTrace();
+		} finally {
+			return check;
+		}
 	}
 
 	public void addPhoneNumber() {
@@ -89,14 +107,16 @@ public class UserValidation {
 		String phoneNo = sc.nextLine();
 		userData.setPhoneNumber(phoneNo);
 		boolean check = phoneNo.matches(PHONE_NUMBER_PATTERN);
-//		if (check == true) {
-//			userData.setPhoneNumber(phoneNo);
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("InValid");
-//			System.out.println("Invalid Phone Number format \nAdd again (Eg:91 9919819801)");
-//			addPhoneNumber();
-//		}
+		try {
+			if (check == true) {
+			}
+
+			else {
+				throw new InvalidUserDetailException(Invalid.PhoneNumber, "Invalid Phone number Format");
+			}
+		} catch (InvalidUserDetailException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addPassword() {
@@ -105,14 +125,16 @@ public class UserValidation {
 		String password = sc.nextLine();
 		userData.setPassword(password);
 		boolean check = password.matches(PASSWORD_PATTERN);// Rule4:Has exactly 1 Special Character
-//		if (check == true) {
-//			userData.setPassword(password);
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("InValid");
-//			System.out.println("Invalid password format \nAdd again [Atleast 8 Character Eg:A1@aA1ba]");
-//			addPassword();
-//		}
+		try {
+			if (check == true) {
+			}
+
+			else {
+				throw new InvalidUserDetailException(Invalid.Password, "Invalid ");
+			}
+		} catch (InvalidUserDetailException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void readFile() throws FileNotFoundException {
@@ -138,15 +160,6 @@ public class UserValidation {
 				UserData.invalidEmail.add(a);
 			}
 		}
-//		for (int i=0;i<emailArr.length;i++) {
-//			boolean check = emailArr[i].matches(EMAIL_PATTERN);
-//			if (check == true) {
-//				validEmail.add(emailArr[i]);
-//
-//			} else {
-//				invalidEmail.add(emailArr[i]);
-//			}
-//		}
 
 		System.out.println("\n-Valid Email- :");
 		for (String a : userData.validEmail)
