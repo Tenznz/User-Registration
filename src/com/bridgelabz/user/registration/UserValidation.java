@@ -15,7 +15,120 @@ public class UserValidation {
 
 	Scanner sc = new Scanner(System.in);
 
-	private UserValidation() {
+	UserValidation() {
+
+	}
+
+	void UserEntry() {
+		Scanner sc = new Scanner(System.in);
+		int i = 0;
+		String outPut = "";
+		do {
+			System.out
+					.println("Check for vaild or not \n1.First Name\n2.Last Name\n3.Email\n4.Password\n5.Phone Number");
+			i = sc.nextInt();
+			System.out.println("Enter value");
+			UserData userData = new UserData();
+			String input = sc.next();
+			switch (i) {
+			case 1:
+				ValidUserEntry firstName = (String text) -> {
+					try {
+						boolean check = text.matches(UserValidation.NAME_PATTERN);
+						if (check == true) {
+							userData.setFirstName(input);
+							return "valid";
+						}
+						throw new InvalidUserDetailException(Invalid.LastName, "First Name invalid format");
+
+					} catch (InvalidUserDetailException e) {
+						e.printStackTrace();
+					}
+					return "invalid";
+				};
+				outPut = firstName.userEntry(input);
+				System.out.println(firstName.userEntry(input));
+				break;
+			case 2:
+				ValidUserEntry lastName = (String text) -> {
+					try {
+						boolean check = input.matches(UserValidation.NAME_PATTERN);
+						if (check == true) {
+							userData.setLastName(input);
+							return "valid";
+						}
+						throw new InvalidUserDetailException(Invalid.LastName, "Last Name invalid format");
+
+					} catch (InvalidUserDetailException e) {
+
+					}
+					return "invalid";
+				};
+				outPut = lastName.userEntry(input);
+				System.out.println(lastName.userEntry(input));
+				break;
+			case 3:
+
+				ValidUserEntry email = (String text) -> {
+					try {
+						boolean check = input.matches(UserValidation.EMAIL_PATTERN);
+						if (check == true) {
+							userData.setEmail(input);
+							return "valid";
+						}
+						throw new InvalidUserDetailException(Invalid.Email, "Email invalid format");
+
+					} catch (InvalidUserDetailException e) {
+						e.printStackTrace();
+					}
+					return "invalid";
+				};
+				outPut = email.userEntry(input);
+				System.out.println(email.userEntry(input));
+				break;
+			case 4:
+				ValidUserEntry password = (String text) -> {
+					try {
+						boolean check = input.matches(UserValidation.PASSWORD_PATTERN);
+						if (check == true) {
+							userData.setPassword(input);
+							return "valid";
+						}
+						throw new InvalidUserDetailException(Invalid.Password, "password invalid format");
+
+					} catch (InvalidUserDetailException e) {
+						e.printStackTrace();
+					}
+					return "invalid";
+				};
+				outPut = password.userEntry(input);
+				System.out.println(outPut);
+				break;
+			case 5:
+				ValidUserEntry phoneNumber = (String text) -> {
+					try {
+						boolean check = input.matches(UserValidation.PHONE_NUMBER_PATTERN);
+						if (check == true) {
+							userData.setPhoneNumber(input);
+							return "valid";
+						}
+						throw new InvalidUserDetailException(Invalid.PhoneNumber, "phone number invalid format");
+
+					} catch (InvalidUserDetailException e) {
+						e.printStackTrace();
+					}
+					return "invalid";
+				};
+				System.out.println(phoneNumber.userEntry(input));
+				break;
+			default:
+				System.out.println("invalid in put");
+			}
+			if (outPut == "invalid" || outPut == "invalid in put") {
+				i--;
+			}
+		} while (i > 0 || i <= 5);
+		sc.close();
 
 	}
 
@@ -162,11 +275,11 @@ public class UserValidation {
 		}
 
 		System.out.println("\n-Valid Email- :");
-		for (String a : userData.validEmail)
+		for (String a : UserData.validEmail)
 			System.out.println(a);
 
 		System.out.println("\n-InValid Email- :");
-		for (String a : userData.invalidEmail)
+		for (String a : UserData.invalidEmail)
 			System.out.println(a);
 		sf.close();
 	}
