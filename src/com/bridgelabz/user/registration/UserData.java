@@ -13,7 +13,7 @@ public class UserData {
 	 static List<String> validEmail;
 	 static List<String> invalidEmail;
 
-	private UserData() {
+	UserData() {
 		validEmail=new ArrayList<>();
 		invalidEmail=new ArrayList<>();
 	}
